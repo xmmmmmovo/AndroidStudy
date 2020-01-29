@@ -1,7 +1,7 @@
 package com.nuc.libary.global
 
 import android.content.Context
-import com.nuc.libary.store.MemoryStore
+import com.nuc.libary.util.store.MemoryStore
 
 object Mall {
     val configurator: Configurator

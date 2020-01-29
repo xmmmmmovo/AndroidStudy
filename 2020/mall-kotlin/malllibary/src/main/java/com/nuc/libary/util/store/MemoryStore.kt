@@ -1,4 +1,4 @@
-package com.nuc.libary.store
+package com.nuc.libary.util.store
 
 class MemoryStore private constructor() {
 
