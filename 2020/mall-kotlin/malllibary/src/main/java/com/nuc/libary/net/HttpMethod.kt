@@ -1,9 +1,10 @@
-package com.nuc.libary.net
+package com.mall.library.net
 
 enum class HttpMethod {
     GET,
     POST,
     PUT,
     DELETE,
-    UPLOAD
+    UPLOAD,
+    DOWNLOAD
 }

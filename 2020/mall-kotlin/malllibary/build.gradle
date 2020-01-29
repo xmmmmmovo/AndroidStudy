@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -22,6 +23,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = kotlin_version
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
 }
 
@@ -33,8 +39,36 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation "com.squareup.retrofit2:retrofit:2.7.1"
-    // 解析返回字符串
-    implementation "com.squareup.retrofit2:converter-scalars:2.7.1"
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    //为了解析返回的字符串
+    implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
+    api 'com.wang.avi:library:2.1.3'
+    //工具库
+    api 'com.blankj:utilcode:1.22.10'
+    //Fragment
+    api 'me.yokeyword:fragmentation:1.3.6'
+    //字体图标
+    api('com.joanzapata.iconify:android-iconify-ionicons:2.2.2', {
+        exclude group: 'com.android.support'
+    })
+    api('com.joanzapata.iconify:android-iconify-fontawesome:2.2.2', {
+        exclude group: 'com.android.support'
+    })
+    //RecyclerView依赖
+    //noinspection GradleCompatible
+    api 'com.android.support:recyclerview-v7:28.0.0'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+    api('com.choices.divider:RecyclerView_Divider:1.0.0') {
+        exclude group: 'com.android.support'
+    }
+    //轮播图依赖
+    api 'com.youth.banner:banner:1.4.10'
+    //网络图片加载库
+    api 'com.github.bumptech.glide:glide:4.8.0'
+    //是kapt
+    kapt 'com.github.bumptech.glide:compiler:4.8.0'
+    api 'com.github.bumptech.glide:okhttp3-integration:4.8.0@aar'
+    //json解析
+    api 'com.alibaba:fastjson:1.1.70.android'
 }
 

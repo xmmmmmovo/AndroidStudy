@@ -1,9 +1,12 @@
-package com.nuc.libary.global
+package com.mall.library.global
 
 import android.content.Context
-import com.nuc.libary.util.store.MemoryStore
+import com.blankj.utilcode.util.Utils
+//import com.blankj.utilcode.util.Utils
+import com.mall.library.util.storage.MemoryStore
 
 object Mall {
+
     val configurator: Configurator
         get() = Configurator.instance
 
@@ -13,6 +16,8 @@ object Mall {
                 GlobalKeys.APPLICATION_CONTEXT,
                 context.applicationContext
             )
+
+        Utils.init(context)
         return Configurator.instance
     }
 
@@ -20,7 +25,7 @@ object Mall {
         return configurator.getConfiguration(key)
     }
 
-    fun <T> getConfiguration(key: Enum<*>): T {
-        return configurator.getConfiguration(key.name)
+    fun <T> getConfiguration(key: Enum<GlobalKeys>): T {
+        return getConfiguration(key.name)
     }
 }

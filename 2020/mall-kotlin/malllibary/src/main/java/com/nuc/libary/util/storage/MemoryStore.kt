@@ -1,10 +1,11 @@
-package com.nuc.libary.util.store
+package com.mall.library.util.storage
 
 class MemoryStore private constructor() {
 
     /**
-     * 线程安全单例
-     * */
+     * 线程安全的单例模式
+     * 深入学习可以仿照Java写法
+     */
     private object Holder {
         internal val INSTANCE = MemoryStore()
     }
@@ -23,16 +24,15 @@ class MemoryStore private constructor() {
 
     fun addData(key: String, value: Any): MemoryStore {
         mDataMap[key] = value
-
         return this
-    }
-
-    fun <T> getData(key: Enum<*>): T {
-        return getData(key.name)
     }
 
     fun addData(key: Enum<*>, value: Any): MemoryStore {
         addData(key.name, value)
         return this
+    }
+
+    fun <T> getData(key: Enum<*>): T {
+        return getData(key.name)
     }
 }

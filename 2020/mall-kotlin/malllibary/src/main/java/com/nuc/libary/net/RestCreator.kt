@@ -1,20 +1,20 @@
-package com.nuc.libary.net
+package com.mall.library.net
 
-import com.nuc.libary.global.GlobalKeys
-import com.nuc.libary.global.Mall
+import com.mall.library.global.GlobalKeys
+import com.mall.library.global.Mall
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
- * 实利
- * */
-class RestCreator {
+ * 创建Retrofit的各个实例
+ */
+object RestCreator {
 
     /**
-     * 构建okhttp
-     * */
+     * 构建我们的okHttp
+     */
     private object OkHttpHolder {
         private const val TIME_OUT = 60
         private val BUILDER = OkHttpClient.Builder()
@@ -24,24 +24,25 @@ class RestCreator {
     }
 
     private object RetrofitHolder {
+        //http://demo.com/
+        //http://demo.com/name...
+        //name...
+        //从全局的配置中取出baseUrl
         private val BASE_URL =
             Mall.getConfiguration<String>(GlobalKeys.API_HOST)
-        internal val RETROFIT_CLIENT =
-            Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(OkHttpHolder.OK_HTTP_CLIENT)
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .build()
+        internal val RETROFIT_CLIENT = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(OkHttpHolder.OK_HTTP_CLIENT)
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .build()
     }
 
     private object RestServiceHolder {
-        internal val REST_SERVICE =
-            RetrofitHolder
-                .RETROFIT_CLIENT
-                .create(RestService::class.java)
+        internal val REST_SERVICE = RetrofitHolder
+            .RETROFIT_CLIENT
+            .create(RestService::class.java)
     }
 
     val restService: RestService
         get() = RestServiceHolder.REST_SERVICE
-
 }

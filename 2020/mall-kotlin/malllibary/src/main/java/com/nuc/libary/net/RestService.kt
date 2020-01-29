@@ -1,4 +1,4 @@
-package com.nuc.libary.net
+package com.mall.library.net
 
 import okhttp3.MultipartBody
 import okhttp3.ResponseBody
@@ -7,53 +7,37 @@ import retrofit2.http.*
 import java.util.*
 
 /**
- * Restful api
- * 通用
- * */
+ * Restful
+ * 之所以使用String返回值，是为了通用
+ */
 interface RestService {
 
-    /**
-     * get
-     * */
     @GET
     fun get(
         @Url url: String?,
         @QueryMap params: WeakHashMap<String, Any>?
     ): Call<String>
 
-    /**
-     * post
-     * */
     @FormUrlEncoded
     @POST
     fun post(
         @Url url: String?,
-        @QueryMap params: WeakHashMap<String, Any>?
+        @FieldMap params: WeakHashMap<String, Any>?
     ): Call<String>
 
-    /**
-     * put
-     * */
     @FormUrlEncoded
-    @PUT
     fun put(
         @Url url: String?,
         @QueryMap params: WeakHashMap<String, Any>?
     ): Call<String>
 
-    /**
-     * delete
-     * */
     @DELETE
     fun delete(
         @Url url: String?,
         @QueryMap params: WeakHashMap<String, Any>?
     ): Call<String>
 
-    /**
-     * download
-     * */
-    // 流形式下载
+    //不会一次性把文件下载到内存里，而是下载一部分就写一部分
     @Streaming
     @GET
     fun download(
@@ -61,10 +45,6 @@ interface RestService {
         @QueryMap params: WeakHashMap<String, Any>?
     ): Call<ResponseBody>
 
-
-    /**
-     * 上传成功
-     * */
     fun upload(
         @Url url: String?,
         @Part file: MultipartBody.Part?

@@ -1,8 +1,10 @@
-package com.nuc.libary.global
+package com.mall.library.global
 
 enum class GlobalKeys {
-    IS_CONFIG_READY,
+    IS_CONFIGURE_READY,
     HANDLER,
     API_HOST,
-    APPLICATION_CONTEXT
+    APPLICATION_CONTEXT,
+    //模拟网络延迟，真实项目中要取出
+    LOADER_DELAYED
 }

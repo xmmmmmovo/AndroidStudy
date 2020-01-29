@@ -1,19 +1,24 @@
-package com.nuc.libary.net
+package com.mall.library.net
 
+import android.content.Context
 import com.mall.library.net.callback.*
+import com.mall.library.ui.loader.LoaderStyles
 import java.util.*
 
 /**
- * 构建restclient并初始化
- * */
+ * 构建RestClient并初始化参数和回调
+ */
 class RestClientBuilder(
     private var url: String? = null,
     private var request: IRequest? = null,
     private var success: ISuccess? = null,
     private var failure: IFailure? = null,
     private var error: IError? = null,
-    private var complete: IComplete? = null
+    private var complete: IComplete? = null,
+    private var context: Context? = null,
+    private var loaderStyles: LoaderStyles? = null
 ) {
+
     private val mParams = WeakHashMap<String, Any>()
 
     fun url(url: String): RestClientBuilder {
@@ -56,12 +61,37 @@ class RestClientBuilder(
         return this
     }
 
+    fun loader(context: Context, style: LoaderStyles): RestClientBuilder {
+        this.context = context
+        this.loaderStyles = style
+        return this
+    }
+
+    fun loader(context: Context?): RestClientBuilder {
+        this.context = context
+        this.loaderStyles = LoaderStyles.BallClipRotateMultipleIndicator
+        return this
+    }
+
     fun build(): RestClient {
         return RestClient(
             url, mParams,
-            request, success, failure,
-            error, complete
+            request, success,
+            failure, error, complete,
+            context, loaderStyles
         )
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
