@@ -27,14 +27,20 @@ class GalleryAdapter :
 
         holder.itemView.setOnClickListener {
             Bundle().apply {
-                putParcelable(
-                    "PHOTO",
-                    getItem(holder.adapterPosition)
+                putParcelableArrayList(
+                    "PHOTO_LIST",
+                    ArrayList(currentList)
                 )
-                holder.itemView.findNavController().navigate(
-                    R.id.action_gallrtyFragment_to_photoFragment,
-                    this
+                putInt(
+                    "PHOTO_POS",
+                    holder.adapterPosition
                 )
+                holder.itemView
+                    .findNavController()
+                    .navigate(
+                        R.id.action_gallrtyFragment_to_pagerPhotoFragment,
+                        this
+                    )
             }
         }
 
