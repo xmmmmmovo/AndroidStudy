@@ -4,7 +4,7 @@
     android:id="@+id/swipeRefreshGallary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GallrtyFragment" >
+    tools:context=".GallaryFragment" >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewGallary"

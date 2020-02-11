@@ -38,5 +38,13 @@ data class PhotoItem(
     @SerializedName("id")
     val photoId: Int,
     @SerializedName("largeImageURL")
-    val fullUrl: String
+    val fullUrl: String,
+    @SerializedName("webformatHeight")
+    val photoHeight: Int,
+    @SerializedName("user")
+    val photoUser: String,
+    @SerializedName("likes")
+    val photoLikes: Int,
+    @SerializedName("favorites")
+    val photoFavorites: Int
 ) : Parcelable

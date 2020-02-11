@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/gallrtyFragment"
-        android:name="com.nuc.gallery.GallrtyFragment"
+        android:name="com.nuc.gallery.GallaryFragment"
         android:label="Gallery"
-        tools:layout="@layout/fragment_gallrty">
+        tools:layout="@layout/fragment_gallary">
         <action
             android:id="@+id/action_gallrtyFragment_to_pagerPhotoFragment"
             app:destination="@id/pagerPhotoFragment" />

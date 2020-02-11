@@ -47,15 +47,26 @@ class GalleryAdapter :
         return holder
     }
 
+
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.itemView.shimmerViewCell.apply {
-            setShimmerColor(0x55FFFFFF)
-            setShimmerAngle(0)
-            startShimmerAnimation()
+        val photoItem = getItem(position)
+        with(holder.itemView) {
+            shimmerLayoutCell.apply {
+                setShimmerColor(0x55FFFFFF)
+                setShimmerAngle(0)
+                startShimmerAnimation()
+            }
+            textViewUser.text = photoItem.photoUser
+            textViewLikes.text = photoItem.photoLikes.toString()
+            textViewFavorites.text = photoItem.photoFavorites.toString()
+
+            imageView.layoutParams.height =
+                photoItem.photoHeight
         }
+
         Glide.with(holder.itemView)
             .load(getItem(position).previewUrl)
-            .placeholder(R.drawable.ic_photo_gray_24dp)
+            .placeholder(R.drawable.photo_placeholder)
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
                     e: GlideException?,
@@ -74,7 +85,8 @@ class GalleryAdapter :
                     isFirstResource: Boolean
                 ): Boolean {
                     return false.also {
-                        holder.itemView.shimmerViewCell?.stopShimmerAnimation()
+                        holder.itemView.shimmerLayoutCell
+                            ?.stopShimmerAnimation()
                     }
                 }
             })
