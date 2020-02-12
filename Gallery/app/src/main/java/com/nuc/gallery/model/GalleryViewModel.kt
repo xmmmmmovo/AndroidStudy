@@ -22,7 +22,7 @@ class GalleryViewModel(application: Application) :
         get() = mPhotoListLive
 
     fun resetQuery() {
-        
+
     }
 
     fun fetchData() {
