@@ -1,4 +1,4 @@
-package com.nuc.gallery
+package com.nuc.gallery.view
 
 
 import android.os.Bundle
@@ -6,8 +6,10 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.nuc.gallery.R
+import com.nuc.gallery.model.GalleryViewModel
 import kotlinx.android.synthetic.main.fragment_gallary.*
 
 /**
@@ -70,7 +72,26 @@ class GallaryFragment : Fragment() {
         swipeRefreshGallary.setOnRefreshListener {
             galleryViewModel.fetchData()
         }
-    }
 
+        recyclerViewGallary.addOnScrollListener(
+            object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    if (dy < 0) {
+                        return
+                    }
+
+                    val layoutManager = recyclerView.layoutManager
+                            as StaggeredGridLayoutManager
+
+                    val intArray = IntArray(2)
+                    layoutManager.findLastVisibleItemPositions(intArray)
+
+                    if (intArray[0] == galleryAdapter.itemCount - 1) {
+
+                    }
+                }
+            })
+    }
 
 }

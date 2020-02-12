@@ -1,9 +1,10 @@
-package com.nuc.gallery
+package com.nuc.gallery.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.nuc.gallery.R
 
 class MainActivity : AppCompatActivity() {
 

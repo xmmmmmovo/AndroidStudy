@@ -1,4 +1,4 @@
-package com.nuc.gallery
+package com.nuc.gallery.data
 
 import android.content.Context
 import com.android.volley.RequestQueue
@@ -10,7 +10,8 @@ class VolleySingle private constructor(context: Context) {
         private var INSTANCE: VolleySingle? = null
         fun getInstance(context: Context) =
             INSTANCE ?: synchronized(this) {
-                VolleySingle(context).also { INSTANCE = it }
+                VolleySingle(context)
+                    .also { INSTANCE = it }
             }
     }
 

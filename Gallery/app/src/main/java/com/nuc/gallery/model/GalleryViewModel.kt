@@ -1,4 +1,4 @@
-package com.nuc.gallery
+package com.nuc.gallery.model
 
 import android.app.Application
 import android.util.Log
@@ -9,6 +9,9 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.google.gson.Gson
+import com.nuc.gallery.data.PhotoItem
+import com.nuc.gallery.data.Pixabay
+import com.nuc.gallery.data.VolleySingle
 
 class GalleryViewModel(application: Application) :
     AndroidViewModel(application) {
@@ -18,6 +21,9 @@ class GalleryViewModel(application: Application) :
     val photoListLive: LiveData<List<PhotoItem>>
         get() = mPhotoListLive
 
+    fun resetQuery() {
+        
+    }
 
     fun fetchData() {
         val strRequest = StringRequest(

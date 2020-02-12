@@ -1,4 +1,4 @@
-package com.nuc.gallery
+package com.nuc.gallery.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +7,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.nuc.gallery.data.PhotoItem
+import com.nuc.gallery.R
 import kotlinx.android.synthetic.main.view_pager_content.view.*
 
 
 class PagerPhotoListAdapter :
-    ListAdapter<PhotoItem, PagerPhotoViewHolder>(DiffCallBack) {
+    ListAdapter<PhotoItem, PagerPhotoViewHolder>(
+        DiffCallBack
+    ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerPhotoViewHolder {
         LayoutInflater
             .from(parent.context)

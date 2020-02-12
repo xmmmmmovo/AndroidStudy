@@ -1,4 +1,4 @@
-package com.nuc.gallery
+package com.nuc.gallery.view
 
 
 import android.Manifest
@@ -23,6 +23,8 @@ import kotlinx.android.synthetic.main.view_pager_content.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import androidx.lifecycle.lifecycleScope
+import com.nuc.gallery.data.PhotoItem
+import com.nuc.gallery.R
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 

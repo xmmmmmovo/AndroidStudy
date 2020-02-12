@@ -1,4 +1,4 @@
-package com.nuc.gallery
+package com.nuc.gallery.data
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

@@ -1,4 +1,4 @@
-package com.nuc.gallery
+package com.nuc.gallery.view
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -15,10 +15,14 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.nuc.gallery.data.PhotoItem
+import com.nuc.gallery.R
 import kotlinx.android.synthetic.main.gallery_cell.view.*
 
 class GalleryAdapter :
-    ListAdapter<PhotoItem, GalleryAdapter.MyViewHolder>(DIFFCALLBACK) {
+    ListAdapter<PhotoItem, GalleryAdapter.MyViewHolder>(
+        DIFFCALLBACK
+    ) {
 
     companion object {
         const val NORMAL_VIEW = 0
@@ -30,7 +34,11 @@ class GalleryAdapter :
         if (viewType == NORMAL_VIEW) {
             holder = MyViewHolder(
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.gallery_cell, parent, false)
+                    .inflate(
+                        R.layout.gallery_cell,
+                        parent,
+                        false
+                    )
             )
 
             holder.itemView.setOnClickListener {
@@ -137,7 +145,7 @@ class GalleryAdapter :
         }
 
         override fun areContentsTheSame(oldItem: PhotoItem, newItem: PhotoItem): Boolean {
-            return oldItem.photoId == newItem.photoId
+            return oldItem == newItem
         }
     }
 }
