@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -19,36 +20,70 @@ import kotlinx.android.synthetic.main.gallery_cell.view.*
 class GalleryAdapter :
     ListAdapter<PhotoItem, GalleryAdapter.MyViewHolder>(DIFFCALLBACK) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val holder = MyViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.gallery_cell, parent, false)
-        )
+    companion object {
+        const val NORMAL_VIEW = 0
+        const val FOOTER_VIEW = 1
+    }
 
-        holder.itemView.setOnClickListener {
-            Bundle().apply {
-                putParcelableArrayList(
-                    "PHOTO_LIST",
-                    ArrayList(currentList)
-                )
-                putInt(
-                    "PHOTO_POS",
-                    holder.adapterPosition
-                )
-                holder.itemView
-                    .findNavController()
-                    .navigate(
-                        R.id.action_gallrtyFragment_to_pagerPhotoFragment,
-                        this
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val holder: MyViewHolder
+        if (viewType == NORMAL_VIEW) {
+            holder = MyViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.gallery_cell, parent, false)
+            )
+
+            holder.itemView.setOnClickListener {
+                Bundle().apply {
+                    putParcelableArrayList(
+                        "PHOTO_LIST",
+                        ArrayList(currentList)
                     )
+                    putInt(
+                        "PHOTO_POS",
+                        holder.adapterPosition
+                    )
+                    holder.itemView
+                        .findNavController()
+                        .navigate(
+                            R.id.action_gallrtyFragment_to_pagerPhotoFragment,
+                            this
+                        )
+                }
             }
+        } else {
+            holder = MyViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(
+                        R.layout.gallery_footer,
+                        parent, false
+                    ).also {
+                        (it.layoutParams as
+                                StaggeredGridLayoutManager.LayoutParams)
+                            .isFullSpan = true
+                    }
+            )
         }
+
+
 
         return holder
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return if (position == itemCount - 1)
+            FOOTER_VIEW else
+            NORMAL_VIEW
+    }
+
+    override fun getItemCount(): Int {
+        return super.getItemCount() + 1
+    }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        if (position == itemCount - 1) {
+            return
+        }
         val photoItem = getItem(position)
         with(holder.itemView) {
             shimmerLayoutCell.apply {
