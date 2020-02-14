@@ -9,6 +9,8 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
+
+
         /**
          * 强制竖屏
          * */
