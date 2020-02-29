@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 }
                 editText.setTypeface(Typeface.MONOSPACE, Typeface.BOLD_ITALIC);
+                flag = 3;
                 break;
 
             case R.id.italicButton:
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 }
                 editText.setTypeface(Typeface.MONOSPACE, Typeface.BOLD_ITALIC);
+                flag = 3;
                 break;
             case R.id.defaultStyleButton:
                 editText.setTypeface(Typeface.MONOSPACE, Typeface.NORMAL);

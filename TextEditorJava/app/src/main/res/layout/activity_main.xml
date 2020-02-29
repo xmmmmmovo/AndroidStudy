@@ -6,7 +6,7 @@
     <!--    这里使用了安卓的最新的databinding系统 让逻辑与界面解耦-->
     <data>
 
-        <import type="android.graphics.Typeface" />
+        <import type="com.nuc.txtedit.R" />
 
         <variable
             name="data"
@@ -50,6 +50,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight="1"
+                android:onClick="@{()->data.setColor(context.getColor(R.color.red))}"
                 android:text="红色"
                 android:textColor="@color/red" />
 
@@ -60,6 +61,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight="1"
+                android:onClick="@{()->data.setColor(context.getColor(R.color.green))}"
                 android:text="绿色"
                 android:textColor="@color/green" />
 
@@ -70,7 +72,9 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight="1"
+                android:onClick="@{()->data.setColor(context.getColor(R.color.blue))}"
                 android:text="蓝色"
+
                 android:textColor="@color/blue" />
         </LinearLayout>
 
@@ -96,6 +100,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight="1"
+                android:onClick="@{()->data.addSize(10)}"
                 android:text="增大" />
 
             <Button
@@ -105,6 +110,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight="1"
+                android:onClick="@{()->data.decreaseSize(10)}"
                 android:text="减小" />
 
             <Button
@@ -114,6 +120,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight="1"
+                android:onClick="@{()->data.setSize(20)}"
                 android:text="默认" />
         </LinearLayout>
 
@@ -139,7 +146,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight="1"
-                android:onClick="@{()->data.setContentStyle(Typeface.BOLD)}"
+                android:onClick="@{()->data.setBoldStyle()}"
                 android:text="加粗" />
 
             <Button
@@ -149,7 +156,6 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight="1"
-                android:onClick="@{()->data.setContentStyle(Typeface.ITALIC)}"
                 android:text="倾斜" />
 
             <Button
@@ -159,7 +165,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight="1"
-                android:onClick="@{()->data.setContentStyle(Typeface.DEFAULT)}"
+                android:onClick="@{()->data.setDefaultStyle()}"
                 android:text="默认" />
         </LinearLayout>
 
@@ -188,9 +194,8 @@
                 android:hint="请输入内容"
                 android:inputType="textPersonName"
                 android:text="@{data.content}"
-                android:textColor="@color/red"
-                android:textSize="20sp"
-                android:typeface="@{data.style}" />
+                android:textColor="@{data.color}"
+                android:textSize="@{data.size}" />
 
         </LinearLayout>
 
