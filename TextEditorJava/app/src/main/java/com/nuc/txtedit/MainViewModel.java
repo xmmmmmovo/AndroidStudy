@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel;
 public class MainViewModel extends ViewModel {
     private MutableLiveData<String> content;
     private MutableLiveData<Typeface> style;
-    private MutableLiveData<Boolean> isSingleChoose;
+    private MutableLiveData<Integer> flag;
 
     public MutableLiveData<String> getContent() {
         if (content == null) {
@@ -18,12 +18,7 @@ public class MainViewModel extends ViewModel {
         return content;
     }
 
-    /**
-     * bold italic
-     */
-    public void setContentStyle(Typeface style) {
-        this.style.setValue(style);
-    }
+
 
     public MutableLiveData<Typeface> getStyle() {
         if (style == null) {
