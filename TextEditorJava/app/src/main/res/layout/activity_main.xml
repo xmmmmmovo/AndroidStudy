@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--    这里使用了安卓的最新的databinding系统 让逻辑与界面解耦-->
+    <!--    这里使用了安卓的最新的databinding系统 让逻辑与界面解耦界面只负责用于数据的提交与传递-->
     <data>
 
         <import type="com.nuc.txtedit.R" />
@@ -146,7 +146,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight="1"
-                android:onClick="@{()->data.setBoldStyle()}"
+                android:onClick="@{()->data.setFlag(data.flag == 2 || data.flag == 3 ? 3 : 1)}"
                 android:text="加粗" />
 
             <Button
@@ -156,6 +156,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight="1"
+                android:onClick="@{()->data.setFlag(data.flag == 1 || data.flag == 3 ? 3 : 2)}"
                 android:text="倾斜" />
 
             <Button
@@ -165,7 +166,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_weight="1"
-                android:onClick="@{()->data.setDefaultStyle()}"
+                android:onClick="@{()->data.setFlag(0)}"
                 android:text="默认" />
         </LinearLayout>
 
@@ -191,7 +192,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="请输入内容"
+                android:hint="请输入要写的内容"
                 android:inputType="textPersonName"
                 android:text="@{data.content}"
                 android:textColor="@{data.color}"

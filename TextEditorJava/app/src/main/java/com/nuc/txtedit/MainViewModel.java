@@ -9,6 +9,10 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+/**
+ * ViewModel类
+ * 这里主要是做数据绑定层干的事情
+ */
 public class MainViewModel extends AndroidViewModel {
     private MutableLiveData<String> content;
     private MutableLiveData<Integer> flag;
@@ -80,5 +84,9 @@ public class MainViewModel extends AndroidViewModel {
 
     public void setColor(Integer color) {
         this.color.setValue(color);
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag.setValue(flag);
     }
 }
