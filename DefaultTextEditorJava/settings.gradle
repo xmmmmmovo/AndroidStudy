@@ -1,0 +1,2 @@
+rootProject.name='DefaultTextEditorJava'
+include ':app'
