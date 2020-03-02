@@ -48,12 +48,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // getColor方法是从res中的color.xml中获取相应的颜色
                 editText.setTextColor(getColor(R.color.red));
                 break;
+
             case R.id.greenButton:
                 editText.setTextColor(getColor(R.color.green));
                 break;
+
             case R.id.blueButton:
                 editText.setTextColor(getColor(R.color.blue));
                 break;
+
             case R.id.biggerButton:
                 // 这里设定文本相关的文本大小
                 // TypedValue.COMPLEX_UNIT_PX 是以像素格式设定文本大小
@@ -63,12 +66,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         editText.getTextSize() + 10
                 );
                 break;
+
             case R.id.smallerButtom:
                 editText.setTextSize(
                         TypedValue.COMPLEX_UNIT_PX,
                         editText.getTextSize() - 10
                 );
                 break;
+
             case R.id.defaultSizeButton:
                 editText.setTextSize(
                         20
@@ -100,10 +105,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 editText.setTypeface(Typeface.MONOSPACE, Typeface.BOLD_ITALIC);
                 flag = 3;
                 break;
+
             case R.id.defaultStyleButton:
                 editText.setTypeface(Typeface.MONOSPACE, Typeface.NORMAL);
                 flag = 0;
                 break;
+
             default:
                 break;
         }

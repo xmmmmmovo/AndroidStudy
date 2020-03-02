@@ -5,7 +5,7 @@
 
     <!--    这里使用了安卓的最新的databinding系统 让逻辑与界面解耦界面只负责用于数据的提交与传递-->
     <data>
-
+        <!--导入资源R-->
         <import type="com.nuc.txtedit.R" />
 
         <variable
