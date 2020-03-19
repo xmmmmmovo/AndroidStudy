@@ -14,9 +14,13 @@ import androidx.lifecycle.ViewModel;
  * 这里主要是做数据绑定层干的事情
  */
 public class MainViewModel extends AndroidViewModel {
+    // 内容数据绑定
     private MutableLiveData<String> content;
+    // 状态数据绑定
     private MutableLiveData<Integer> flag;
+    //颜色数据绑定
     private MutableLiveData<Integer> color;
+    // 大小数据绑定
     private MutableLiveData<Float> size;
 
     public MainViewModel(@NonNull Application application) {
@@ -43,7 +47,7 @@ public class MainViewModel extends AndroidViewModel {
     public MutableLiveData<Integer> getColor() {
         if (color == null) {
             color = new MutableLiveData<>();
-            color.setValue(R.color.black);
+            color.setValue(getApplication().getColor(R.color.black));
         }
 
         return color;
@@ -70,10 +74,17 @@ public class MainViewModel extends AndroidViewModel {
         return size;
     }
 
+    /**
+     * @param size 设定size 注意这里使用的单位是sp
+     * */
     public void setSize(float size) {
         this.size.setValue((float) sp2px(getApplication(), size));
     }
 
+    /**
+     * 增大size
+     * @param px 增大的size 像素值
+     * */
     public void addSize(float px) {
         size.setValue(size.getValue() + px);
     }
