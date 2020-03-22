@@ -36,7 +36,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="2sp"
             android:ems="10"
-            android:inputType="textPassword"
             android:textSize="18sp" />
 
         <TextView
@@ -46,7 +45,9 @@
             android:layout_margin="2sp"
             android:layout_weight="1"
             android:text="不能为空"
-            android:textSize="18sp" />
+            android:textColor="#ff0000"
+            android:textSize="16sp"
+            android:visibility="invisible" />
     </LinearLayout>
 
     <LinearLayout
@@ -79,7 +80,9 @@
             android:layout_margin="2sp"
             android:layout_weight="1"
             android:text="6-15位"
-            android:textSize="18sp" />
+            android:textColor="#ff0000"
+            android:textSize="16sp"
+            android:visibility="invisible" />
     </LinearLayout>
 
     <LinearLayout
@@ -101,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2sp"
-            android:ems="10"
+            android:ems="8"
             android:inputType="textPassword"
             android:textSize="18sp" />
 
@@ -112,7 +115,9 @@
             android:layout_margin="2sp"
             android:layout_weight="1"
             android:text="密码不一致"
-            android:textSize="18sp" />
+            android:textColor="#ff0000"
+            android:textSize="16sp"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
@@ -131,6 +136,7 @@
             android:textSize="18sp" />
 
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2sp"
@@ -142,6 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="2sp"
+                android:checked="true"
                 android:text="男" />
 
             <RadioButton
@@ -183,7 +190,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="注册" />
