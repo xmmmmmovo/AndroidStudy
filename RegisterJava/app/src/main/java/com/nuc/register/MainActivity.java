@@ -52,16 +52,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (nameEditText.getText().length() == 0) {
             ok = false;
             unemptyText.setVisibility(TextView.VISIBLE);
+        } else {
+            unemptyText.setVisibility(TextView.INVISIBLE);
         }
 
         if (pwdEditText.length() < 6) {
             ok = false;
             pwdLengthText.setVisibility(TextView.VISIBLE);
+        } else {
+            pwdLengthText.setVisibility(TextView.INVISIBLE);
         }
 
         if (!confirmPwdEditText.getText().toString().equals(pwdEditText.getText().toString())) {
             ok = false;
             unEquelText.setVisibility(TextView.VISIBLE);
+        } else {
+            unEquelText.setVisibility(TextView.INVISIBLE);
         }
 
         if (ok) {
