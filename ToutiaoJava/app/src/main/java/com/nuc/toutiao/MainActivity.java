@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager2 = findViewById(R.id.mainViewPager);
         tabLayout = findViewById(R.id.mainTabLayout);
+
         viewPager2.setAdapter(new FragmentStateAdapter(this) {
             @NonNull
             @Override
