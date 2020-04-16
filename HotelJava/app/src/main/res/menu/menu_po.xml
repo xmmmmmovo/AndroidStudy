@@ -3,17 +3,17 @@
 
     <item
         android:id="@+id/itemhb"
-        android:title="湖北">
+        android:title="山东">
         <menu>
             <item
                 android:id="@+id/wuhan"
-                android:title="武汉"></item>
+                android:title="济南"></item>
             <item
                 android:id="@+id/ez"
-                android:title="鄂州"></item>
+                android:title="烟台"></item>
             <item
                 android:id="@+id/jm"
-                android:title="荆门"></item>
+                android:title="青岛"></item>
         </menu>
     </item>
 

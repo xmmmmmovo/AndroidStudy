@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.wuhan:
-                                edtCity.setText("武汉");
+                                edtCity.setText("济南");
                                 break;
                             case R.id.ez:
-                                edtCity.setText("鄂州");
+                                edtCity.setText("烟台");
                                 break;
                             case R.id.jm:
-                                edtCity.setText("荆门");
+                                edtCity.setText("青岛");
                                 break;
                             case R.id.cs:
                                 edtCity.setText("长沙");
