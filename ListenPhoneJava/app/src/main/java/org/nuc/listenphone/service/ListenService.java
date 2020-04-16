@@ -24,7 +24,6 @@ public class ListenService extends Service {
 
     @Override
     public void onCreate() {
-        Log.d("zhazha", "onCreate: service");
         super.onCreate();
         tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
         myListener = new MyListener();
@@ -73,9 +72,6 @@ public class ListenService extends Service {
                     recorder.setOutputFile(file.getAbsolutePath());
                     // 设定音频编码
                     recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-
-                    System.out.println("开始存储哦");
-
                     try {
                         recorder.prepare();
                     } catch (IOException e) {

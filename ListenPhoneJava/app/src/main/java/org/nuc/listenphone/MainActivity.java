@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("zhazha", "onCreate: 启动");
                 intent = new Intent(MainActivity.this, ListenService.class);
                 MainActivity.this.startService(intent);
                 Toast.makeText(MainActivity.this, "开始监听", Toast.LENGTH_LONG).show();
