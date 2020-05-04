@@ -1,9 +1,10 @@
-package org.nuc.labs
+package org.nuc.labs.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import org.nuc.labs.R
 
 class MainActivity : AppCompatActivity() {
 
