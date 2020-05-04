@@ -1,13 +1,14 @@
 package org.nuc.labs.view.study
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 
 import org.nuc.labs.R
+import org.nuc.labs.databinding.StudyFragmentBinding
 
 class StudyFragment : Fragment() {
 
@@ -15,19 +16,19 @@ class StudyFragment : Fragment() {
         fun newInstance() = StudyFragment()
     }
 
-    private lateinit var viewModel: StudyViewModel
+    private val studyViewModel by viewModels<StudyViewModel>()
+    private lateinit var binding: StudyFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.study_fragment, container, false)
+        binding = StudyFragmentBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(StudyViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }

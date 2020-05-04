@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 
-import org.nuc.labs.R
+import org.nuc.labs.databinding.LoginFragmentBinding
 
 class LoginFragment : Fragment() {
 
@@ -16,12 +16,14 @@ class LoginFragment : Fragment() {
     }
 
     private val viewModel by viewModels<LoginViewModel>()
+    private lateinit var binding: LoginFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.login_fragment, container, false)
+        binding = LoginFragmentBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
