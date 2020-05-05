@@ -16,7 +16,7 @@ import org.nuc.labs.db.model.Student
     version = 1,
     exportSchema = false
 )
-abstract class StudentDatabase private constructor() : RoomDatabase() {
+abstract class StudentDatabase : RoomDatabase() {
 
     companion object {
         @Volatile
@@ -26,9 +26,11 @@ abstract class StudentDatabase private constructor() : RoomDatabase() {
                 INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
                     StudentDatabase::class.java,
-                    "student_database"
+                    "app.db"
                 )
                     .allowMainThreadQueries()
+                    .createFromAsset("app.db")
+                    .fallbackToDestructiveMigration()
                     .build()
                     .also {
                         INSTANCE = it

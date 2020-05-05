@@ -12,7 +12,7 @@ import org.nuc.labs.db.model.Queston
     version = 1,
     exportSchema = false
 )
-abstract class QuestionDatabase private constructor() : RoomDatabase() {
+abstract class QuestionDatabase : RoomDatabase() {
     companion object {
         @Volatile
         private var INSTANCE: QuestionDatabase? = null
@@ -21,9 +21,11 @@ abstract class QuestionDatabase private constructor() : RoomDatabase() {
                 INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
                     QuestionDatabase::class.java,
-                    "question_database"
+                    "app.db"
                 )
                     .allowMainThreadQueries()
+                    .createFromAsset("app.db")
+                    .fallbackToDestructiveMigration()
                     .build()
                     .also {
                         INSTANCE = it

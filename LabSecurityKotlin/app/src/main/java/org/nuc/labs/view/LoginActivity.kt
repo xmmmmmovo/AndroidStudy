@@ -1,11 +1,19 @@
 package org.nuc.labs.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LifecycleCoroutineScope
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.nuc.labs.R
 import org.nuc.labs.databinding.ActivityLoginBinding
+import org.nuc.labs.db.database.StudentDatabase
+import org.nuc.labs.db.model.Student
 import org.nuc.labs.view.review.ReviewActivity
 import org.nuc.labs.view.study.StudyActivity
 import org.nuc.labs.view.test.TestActivity
@@ -59,6 +67,29 @@ class LoginActivity : AppCompatActivity() {
             binding.modeSpinner.adapter = it
         }
         fakeData()
+        val sd = StudentDatabase.getInstance(applicationContext)
+
+        Log.d("zhazha", sd.toString())
+
+        val ss = sd.getStudentDao()
+        GlobalScope.launch {
+            ss.insertStudents(
+                Student(
+                    0,
+                    "1",
+                    "1",
+                    "1",
+                    "1",
+                    "1",
+                    "1",
+                    "1",
+                    "1",
+                    "1"
+                )
+            )
+            val ans = ss.getAllStudentLiveData().value
+            Log.d("zhazha", ans.toString())
+        }
     }
 
     fun fakeData() {
