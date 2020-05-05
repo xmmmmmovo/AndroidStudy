@@ -16,5 +16,5 @@ interface QuestoinDao {
     suspend fun deleteQuestion(vararg questons: Queston)
 
     @Query("select * from tiku")
-    fun getAllQuestioniveData(): LiveData<List<Queston>>
+    suspend fun getAllQuestioniveData(): List<Queston>
 }

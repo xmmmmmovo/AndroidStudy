@@ -16,5 +16,5 @@ interface StudentDao {
     suspend fun deleteStudents(vararg students: Student)
 
     @Query("select * from stud")
-    fun getAllStudentLiveData(): LiveData<List<Student>>
+    suspend fun getAllStudentLiveData(): List<Student>
 }

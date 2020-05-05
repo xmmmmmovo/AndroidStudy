@@ -67,29 +67,6 @@ class LoginActivity : AppCompatActivity() {
             binding.modeSpinner.adapter = it
         }
         fakeData()
-        val sd = StudentDatabase.getInstance(applicationContext)
-
-        Log.d("zhazha", sd.toString())
-
-        val ss = sd.getStudentDao()
-        GlobalScope.launch {
-            ss.insertStudents(
-                Student(
-                    0,
-                    "1",
-                    "1",
-                    "1",
-                    "1",
-                    "1",
-                    "1",
-                    "1",
-                    "1",
-                    "1"
-                )
-            )
-            val ans = ss.getAllStudentLiveData().value
-            Log.d("zhazha", ans.toString())
-        }
     }
 
     fun fakeData() {

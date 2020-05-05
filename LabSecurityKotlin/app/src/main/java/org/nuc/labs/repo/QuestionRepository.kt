@@ -2,6 +2,7 @@ package org.nuc.labs.repo
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.nuc.labs.db.dao.QuestoinDao
@@ -15,7 +16,7 @@ class QuestionRepository constructor(context: Context) {
 
     init {
         GlobalScope.launch {
-            allQuestionLiveData = studentDao.getAllQuestioniveData()
+            allQuestionLiveData = MutableLiveData(studentDao.getAllQuestioniveData())
         }
     }
 }
