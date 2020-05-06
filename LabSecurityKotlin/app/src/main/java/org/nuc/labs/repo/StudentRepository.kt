@@ -3,7 +3,6 @@ package org.nuc.labs.repo
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.nuc.labs.db.dao.StudentDao
@@ -17,7 +16,7 @@ class StudentRepository constructor(context: Context) {
 
     init {
         GlobalScope.launch {
-            allStudentLiveData = MutableLiveData(studentDao.getAllStudentLiveData())
+            allStudentLiveData = MutableLiveData(studentDao.getAllStudents())
         }
     }
 }

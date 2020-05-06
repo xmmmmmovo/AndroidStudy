@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleCoroutineScope
 import kotlinx.coroutines.GlobalScope
@@ -21,7 +22,8 @@ import org.nuc.labs.view.test.TestActivity
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val modes = listOf("学习模式", "考试模式", "回看模式")
-
+    private val database =
+        StudentDatabase.getInstance(applicationContext)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,30 +33,45 @@ class LoginActivity : AppCompatActivity() {
             this.finish()
         }
         binding.loginButton.setOnClickListener {
-            when (binding.modeSpinner.selectedItemPosition) {
-                0 -> {
-                    val i = Intent(
+            GlobalScope.launch {
+                val ans = database.getStudentDao()
+                    .getStudentByNumber(binding.nameEditText.text.toString())
+
+                if (ans.stuPwd.equals(binding.pwdEditText.text.toString())) {
+                    when (binding.modeSpinner.selectedItemPosition) {
+                        0 -> {
+                            val i = Intent(
+                                this@LoginActivity,
+                                StudyActivity::class.java
+                            )
+                            i.flags =
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(i)
+                        }
+                        1 -> {
+                            val i = Intent(
+                                this@LoginActivity,
+                                TestActivity::class.java
+                            )
+                            i.flags =
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(i)
+                        }
+                        2 -> {
+                            val i = Intent(
+                                this@LoginActivity,
+                                ReviewActivity::class.java
+                            )
+                            i.flags =
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(i)
+                        }
+                    }
+                } else {
+                    Toast.makeText(
                         this@LoginActivity,
-                        StudyActivity::class.java
-                    )
-                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(i)
-                }
-                1 -> {
-                    val i = Intent(
-                        this@LoginActivity,
-                        TestActivity::class.java
-                    )
-                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(i)
-                }
-                2 -> {
-                    val i = Intent(
-                        this@LoginActivity,
-                        ReviewActivity::class.java
-                    )
-                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(i)
+                        "密码错误!", Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }
