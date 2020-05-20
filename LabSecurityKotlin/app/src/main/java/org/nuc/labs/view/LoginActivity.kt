@@ -22,13 +22,13 @@ import org.nuc.labs.view.test.TestActivity
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val modes = listOf("学习模式", "考试模式", "回看模式")
-    private val database =
-        StudentDatabase.getInstance(applicationContext)
+    private lateinit var database: StudentDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        database = StudentDatabase.getInstance(applicationContext)
         binding.exitButton.setOnClickListener {
             this.finish()
         }

@@ -4,11 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import org.nuc.labs.db.dao.QuestoinDao
-import org.nuc.labs.db.model.Queston
+import org.nuc.labs.db.dao.QuestionDao
+import org.nuc.labs.db.model.Question
 
 @Database(
-    entities = arrayOf(Queston::class),
+    entities = arrayOf(Question::class),
     version = 1,
     exportSchema = false
 )
@@ -33,5 +33,5 @@ abstract class QuestionDatabase : RoomDatabase() {
             }
     }
 
-    abstract fun getQuestionDao(): QuestoinDao
+    abstract fun getQuestionDao(): QuestionDao
 }
