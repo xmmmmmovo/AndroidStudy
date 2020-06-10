@@ -114,54 +114,6 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  // 第三方
-  Widget _buildThirdPartyLogin() {
-    return Container(
-      width: duSetWidth(295),
-      margin: EdgeInsets.only(bottom: duSetHeight(40)),
-      child: Column(
-        children: <Widget>[
-          // title
-          Text(
-            "Or sign in with social networks",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: primaryText,
-              fontFamily: "Avenir",
-              fontWeight: FontWeight.w400,
-              fontSize: duSetFontSize(16),
-            ),
-          ),
-          // 按钮
-          Padding(
-            padding: EdgeInsets.only(top: duSetHeight(20)),
-            child: Row(
-              children: <Widget>[
-                btnFlatButtonBorderOnlyWidget(
-                  onPressed: () {},
-                  width: 88,
-                  iconFileName: "twitter",
-                ),
-                Spacer(),
-                btnFlatButtonBorderOnlyWidget(
-                  onPressed: () {},
-                  width: 88,
-                  iconFileName: "google",
-                ),
-                Spacer(),
-                btnFlatButtonBorderOnlyWidget(
-                  onPressed: () {},
-                  width: 88,
-                  iconFileName: "facebook",
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   // 有账号
   Widget _buildHaveAccountButton() {
     return Container(
@@ -205,7 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
             _buildLogo(),
             _buildInputForm(),
             Spacer(),
-            _buildThirdPartyLogin(),
+            thirdPartyLogin(),
             _buildHaveAccountButton(),
           ],
         ),
