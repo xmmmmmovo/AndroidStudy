@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:newsflutter/api/user.dart';
 import 'package:newsflutter/components/conponents.dart';
 import 'package:newsflutter/components/toast.dart';
+import 'package:newsflutter/entities/entities.dart';
 import 'package:newsflutter/utils/screen.dart';
 import 'package:newsflutter/utils/utils.dart';
 import 'package:newsflutter/values/values.dart';
@@ -16,7 +18,7 @@ class _SignInPageState extends State<SignInPage> {
   final emailController = TextEditingController();
   final pwdController = TextEditingController();
 
-  _handleSignIn() {
+  _handleSignIn() async {
     if (!duIsEmail(emailController.value.text)) {
       toastInfo(msg: '请输入正确邮件格式!');
       return;
@@ -25,6 +27,14 @@ class _SignInPageState extends State<SignInPage> {
       toastInfo(msg: '密码不能小于6位!');
       return;
     }
+
+    var params = UserRequestEntity(
+        email: emailController.text,
+        password: duSHA256(pwdController.text)
+    );
+
+    var res = await login(params: params);
+
   }
 
   _handleNavSignUp() {
@@ -134,10 +144,10 @@ class _SignInPageState extends State<SignInPage> {
               children: [
                 // 登录
                 btnFlatButtonWidget(
-                  onPressed: _handleSignIn,
-                  gbColor: primaryElement,
-                  title: "Sign in",
-                  width: duSetWidth(280)
+                    onPressed: _handleSignIn,
+                    gbColor: primaryElement,
+                    title: "Sign in",
+                    width: duSetWidth(280)
                 ),
               ],
             ),
