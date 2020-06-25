@@ -13,3 +13,5 @@ const secondaryElement = Color.fromARGB(255, 246, 246, 246);
 const secondaryElementText = Color.fromARGB(255, 41, 103, 255);
 
 const thirdElement = Color.fromARGB(255, 45, 45, 47);
+
+const tabBarElement = Color.fromARGB(255, 208, 208, 208);

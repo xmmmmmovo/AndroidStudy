@@ -1,8 +1,10 @@
 library values;
 
-export 'colors.dart';
-export 'shadows.dart';
-export 'radii.dart';
 export 'borders.dart';
-export 'store.dart';
+export 'cache.dart';
+export 'colors.dart';
+export 'proxy.dart';
+export 'radii.dart';
 export 'server.dart';
+export 'shadows.dart';
+export 'store.dart';
