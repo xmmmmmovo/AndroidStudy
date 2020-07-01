@@ -138,6 +138,15 @@ class _SignUpPageState extends State<SignUpPage> {
       resizeToAvoidBottomInset: false,
       appBar: transparentAppBar(
         context: context,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: primaryText,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(
